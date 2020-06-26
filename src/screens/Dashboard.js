@@ -14,16 +14,11 @@ class dashboard extends React.Component {
     )
   }
 
-  renderCardRows() {
-    const { characterCollection } = this.props
-  }
-
   render() {
     const { characterCollection } = this.props
     return (
       <div className="content">
         {this.renderHead()}
-
         <CardBody array={characterCollection} />
       </div>
     )

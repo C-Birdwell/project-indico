@@ -1,16 +1,15 @@
 import React from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import { Dashboard } from '../screens'
 
-import NotFoundPage from '../components/NotFoundPage'
-import { Header } from '../components/'
+import { Header } from '../components'
+import { Dashboard, NotFound } from '../screens'
 
 const AppRouter = () => (
   <BrowserRouter>
     <Header />
     <Switch>
       <Route path="/" component={Dashboard} exact={true} />
-      <Route component={NotFoundPage} />
+      <Route component={NotFound} />
     </Switch>
   </BrowserRouter>
 )
