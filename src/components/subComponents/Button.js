@@ -12,7 +12,7 @@ export const Button = props => {
             <FontAwesomeIcon icon={icon} />
           </div>
         )}
-        <div className="col-9 center hide-mobile">
+        <div className="col-9 center">
           <p>{text}</p>
         </div>
       </div>

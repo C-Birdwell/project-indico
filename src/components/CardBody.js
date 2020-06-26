@@ -1,8 +1,11 @@
 import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSkull } from '@fortawesome/free-solid-svg-icons'
 
 import {
+  _characterDelete,
   _characterHealthAdd,
   _characterHealthSub,
   _characterAttackAdd,
@@ -49,6 +52,7 @@ class cardBody extends React.Component {
 
   renderCard(val) {
     const {
+      _characterDelete,
       _characterHealthSub,
       _characterHealthAdd,
       _characterAttackAdd,
@@ -64,7 +68,10 @@ class cardBody extends React.Component {
       <div className="card-container" key={JSON.stringify(findCharacter)}>
         <div className="col-1">
           <div className="card-character-image">
-            <img src={`../images/${val.category}.jpg`} />
+            <img src={`../images/${val.category}.jpg`} alt={`${val.category}`} />
+            <div className="remove-character-icon" onClick={() => _characterDelete(val.id)}>
+              <FontAwesomeIcon icon={faSkull} />
+            </div>
           </div>
         </div>
         <div className="col-4 align-end">
@@ -122,6 +129,7 @@ const mapStateToProps = state => ({
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(
     {
+      _characterDelete,
       _characterHealthAdd,
       _characterHealthSub,
       _characterAttackAdd,

@@ -1,4 +1,5 @@
 export const CHARACTER_CREATE = 'character_create'
+export const CHARACTER_DELETE = 'character_delete'
 export const CHARACTER_COLLECTION = 'character_collection'
 export const CHARACTER_HEALTH_SET = 'character_health_set'
 export const CHARACTER_HEALTH_ADD = 'character_health_add'

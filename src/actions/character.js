@@ -1,5 +1,6 @@
 import {
   CHARACTER_CREATE,
+  CHARACTER_DELETE,
   CHARACTER_HEALTH_ADD,
   CHARACTER_HEALTH_SUB,
   CHARACTER_HEALTH_SET,
@@ -11,6 +12,11 @@ import {
 
 export const _characterCreate = () => ({
   type: CHARACTER_CREATE,
+})
+
+export const _characterDelete = payload => ({
+  type: CHARACTER_DELETE,
+  payload,
 })
 
 export const _characterHealthAdd = payload => ({

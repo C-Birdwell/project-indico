@@ -16,9 +16,16 @@
     }
   }
 
-  .header .button p {
-    @media screen and (max-width: $break-pad) {
-      font-size: 10px;
+  .header .button {
+    & p {
+      @media screen and (max-width: $break-pad) {
+        font-size: 10px;
+      }
+    }
+    & svg {
+      @media screen and (max-width: $break-pad) {
+        font-size: 12px;
+      }
     }
   }
 

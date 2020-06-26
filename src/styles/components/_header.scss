@@ -3,6 +3,7 @@
 header {
   max-height: 130px;
   position: fixed;
+  z-index: 10;
   background-color: rgba($comet, 0.5);
   & .button {
     max-height: 50px;

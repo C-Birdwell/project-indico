@@ -6,7 +6,7 @@ import { dataCharacterCategory } from '../data'
 import {
   CHARACTER_COLLECTION,
   CHARACTER_CREATE,
-  CHARACTER_DATA,
+  CHARACTER_DELETE,
   CHARACTER_HEALTH_ADD,
   CHARACTER_HEALTH_SET,
   CHARACTER_HEALTH_SUB,
@@ -40,6 +40,12 @@ export const character = (state = INITIAL_STATE, action) => {
 
     case CHARACTER_CREATE:
       return { ...state, characterCollection: state.characterCollection.concat(characterContent()) }
+
+    case CHARACTER_DELETE:
+      return {
+        ...state,
+        characterCollection: state.characterCollection.filter(val => val.id !== action.payload),
+      }
 
     case CHARACTER_HEALTH_ADD:
       return updateCharacterStats('health', 1)
