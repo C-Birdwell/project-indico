@@ -1,16 +1,14 @@
-# React Enviroment
+# Indico Quest
 
 # Description
 
-Custom React enviroment that includes node-server, SaSS support, Redux, Jest, live browser detection, and formatting support.
+A take home assignment for Indico.
 
 # Setup
 
-1. git clone https://github.com/C-Birdwell/React-Enviroment.git - install project
+1. git clone https://github.com/C-Birdwell/project-indico.git
 2. yarn install - install node dependencies
-3. Setup server for devolopment
-   1. yarn start - starts node server (keep this running in a seperate terminal window)
-   2. yarn dev-server - starts enviroment for development (keep this running in a seperate terminal window)
+3. yarn dev-server - starts environment for development
 
 # Extra Scripts
 
