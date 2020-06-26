@@ -1,0 +1,28 @@
+@import '../base/variables';
+
+.button {
+  justify-content: center;
+  display: flex;
+  color: $light;
+  background-color: $green;
+  width: 90%;
+  &:focus {
+    outline-width: 0;
+  }
+  &.subtract {
+    background-color: $red;
+    &:hover {
+      background-color: $inherited-button-hover;
+    }
+  }
+  & svg {
+    align-self: center;
+  }
+
+  & p {
+    text-align: center;
+    display: block;
+    height: auto;
+    flex: 0;
+  }
+}

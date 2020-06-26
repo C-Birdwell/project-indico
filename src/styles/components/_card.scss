@@ -1,0 +1,33 @@
+@import '../base/variables';
+.card {
+  &-character-image {
+    padding: 0 0 20px 0;
+  }
+
+  &-character-body {
+    max-height: 150px;
+    padding: 0 5%;
+    & p {
+      font-family: 'Noto Sans', sans-serif;
+      font-size: 25px;
+    }
+    & > .row {
+      margin: 0 0 5px 0;
+    }
+  }
+
+  &-container {
+    background-color: $oxford-blue;
+    border-radius: $card-standard;
+    border: 1px solid $blue-bayoux;
+    max-height: 500px;
+    padding: 0 0 20px 0;
+    & .button {
+      height: 50px;
+      align-self: center;
+      & p {
+        font-size: 25px;
+      }
+    }
+  }
+}

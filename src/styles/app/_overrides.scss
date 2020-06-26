@@ -1,0 +1,30 @@
+@import '../base/variables';
+
+//Overides
+#root {
+  .grid-container {
+    @media screen and (max-width: $break-pad) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media screen and (max-width: $break-mobile) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+  .card-character-body p {
+    @media screen and (max-width: $break-pad) {
+      font-size: 20px;
+    }
+  }
+
+  .header .button p {
+    @media screen and (max-width: $break-pad) {
+      font-size: 10px;
+    }
+  }
+
+  .hide-mobile {
+    @media screen and (max-width: $break-mobile) {
+      display: none;
+    }
+  }
+}

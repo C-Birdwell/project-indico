@@ -1,0 +1,44 @@
+@import '../base/variables';
+
+.row {
+  flex-direction: row;
+}
+
+@for $i from 1 through 100 {
+  .col-#{$i} {
+    flex: $i;
+    flex-basis: 0;
+    flex-grow: #{$i};
+    flex-shrink: 0;
+  }
+}
+
+.center {
+  justify-content: center;
+}
+
+.content {
+  height: auto;
+  padding-top: 150px;
+  @extend %contain-elements;
+}
+
+.align-end {
+  justify-content: flex-end;
+}
+
+.grid-container {
+  display: grid;
+  margin: 0 auto;
+  grid-row-gap: 20px;
+
+  @for $i from 1 through 100 {
+    &.grid-#{$i} {
+      grid-template-columns: repeat($i, 1fr);
+    }
+  }
+
+  &.gap {
+    column-gap: 20px;
+  }
+}

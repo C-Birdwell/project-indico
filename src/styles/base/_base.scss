@@ -1,20 +1,26 @@
+@import 'placeholder';
+@import 'variables';
+
 html {
   font-size: 62.5%;
+  overflow-x: hidden;
 }
 
 body {
+  @extend %flex-layout;
   font-family: Helvetica, Arial, sans-serif;
-  font-size: $m-size;
+  min-height: calc(100vh + 100px);
+  position: relative;
+  & * {
+    @extend %flex-layout;
+    height: 100%;
+  }
 }
 
-button {
-  cursor: pointer;
+#root {
+  min-height: 100vh;
 }
 
-button:disabled {
-  cursor: default;
-}
-
-.is-active {
-  font-weight: bold;
+script {
+  display: none;
 }

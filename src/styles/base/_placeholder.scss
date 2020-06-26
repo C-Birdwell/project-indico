@@ -1,0 +1,18 @@
+%flex-layout {
+  display: flexbox;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+%contain-elements {
+  max-width: 1500px;
+  width: 80%;
+  margin: 0 auto;
+}

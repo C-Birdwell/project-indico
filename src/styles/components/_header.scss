@@ -1,0 +1,16 @@
+@import '../base/variables';
+
+header {
+  max-height: 130px;
+  position: fixed;
+  background-color: rgba($comet, 0.5);
+  & .button {
+    max-height: 50px;
+    justify-content: center;
+    max-width: 250px;
+    margin: 0 5% 0 0;
+  }
+  & .header-content {
+    @extend %contain-elements;
+  }
+}
