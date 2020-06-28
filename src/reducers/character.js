@@ -1,6 +1,7 @@
 import { v4 as uuidv4 } from 'uuid'
+import update from 'immutability-helper'
 
-import { randomizeArray, updateArrayObject, setValueOfArray } from '../utils'
+import { randomizeArray, setValueOfArray } from '../utils'
 import { dataCharacterCategory } from '../data'
 
 import {
@@ -29,10 +30,24 @@ const characterContent = () => ({
 })
 
 export const character = (state = INITIAL_STATE, action) => {
-  const updateCharacterStats = (stat, amt) => ({
-    ...state,
-    characterCollection: updateArrayObject(action.payload, state.characterCollection, stat, amt),
-  })
+  // TODO: refactor function for reusability
+  // const updateCharacterStats = (stat, amt) =>
+  //   updateArrayObject(state, action.payload, state.characterCollection, stat, amt)
+
+  // const updateCharacterStats = array => {
+  //   update(state, {
+  //     array: {
+  //       [findKey(action.payload)]: {
+  //         health: {
+  //           $set: state.characterCollection[findKey(action.payload)].health + 1,
+  //         },
+  //       },
+  //     },
+  //   })
+  // }
+
+  // TODO: decouple function for reusability
+  const findKey = id => state.characterCollection.findIndex(val => val.id == id)
 
   switch (action.type) {
     case CHARACTER_COLLECTION:
@@ -47,23 +62,92 @@ export const character = (state = INITIAL_STATE, action) => {
         characterCollection: state.characterCollection.filter(val => val.id !== action.payload),
       }
 
+    // case CHARACTER_HEALTH_ADD:
+    //   return updateArrayObject(state, action.payload, state.characterCollection, 'health', 1)
+
+    // case CHARACTER_HEALTH_ADD:
+    //   return updateCharacterStats(state.characterCollection)
+
     case CHARACTER_HEALTH_ADD:
-      return updateCharacterStats('health', 1)
+      return update(state, {
+        characterCollection: {
+          [findKey(action.payload)]: {
+            health: {
+              $set: state.characterCollection[findKey(action.payload)].health + 1,
+            },
+          },
+        },
+      })
+
+    // case CHARACTER_HEALTH_SUB:
+    //   return updateCharacterStats('health', -1)
 
     case CHARACTER_HEALTH_SUB:
-      return updateCharacterStats('health', -1)
+      return update(state, {
+        characterCollection: {
+          [findKey(action.payload)]: {
+            health: {
+              $set: state.characterCollection[findKey(action.payload)].health - 1,
+            },
+          },
+        },
+      })
+
+    // case CHARACTER_ATTACK_ADD:
+    //   return updateCharacterStats('attack', 1)
 
     case CHARACTER_ATTACK_ADD:
-      return updateCharacterStats('attack', 1)
+      return update(state, {
+        characterCollection: {
+          [findKey(action.payload)]: {
+            attack: {
+              $set: state.characterCollection[findKey(action.payload)].attack + 1,
+            },
+          },
+        },
+      })
+
+    // case CHARACTER_ATTACK_SUB:
+    //   return updateCharacterStats('attack', -1)
 
     case CHARACTER_ATTACK_SUB:
-      return updateCharacterStats('attack', -1)
+      return update(state, {
+        characterCollection: {
+          [findKey(action.payload)]: {
+            attack: {
+              $set: state.characterCollection[findKey(action.payload)].attack - 1,
+            },
+          },
+        },
+      })
+
+    // case CHARACTER_DEFENSE_ADD:
+    //   return updateCharacterStats('defense', 1)
 
     case CHARACTER_DEFENSE_ADD:
-      return updateCharacterStats('defense', 1)
+      return update(state, {
+        characterCollection: {
+          [findKey(action.payload)]: {
+            defense: {
+              $set: state.characterCollection[findKey(action.payload)].defense + 1,
+            },
+          },
+        },
+      })
+
+    // case CHARACTER_DEFENSE_SUB:
+    //   return updateCharacterStats('defense', -1)
 
     case CHARACTER_DEFENSE_SUB:
-      return updateCharacterStats('defense', -1)
+      return update(state, {
+        characterCollection: {
+          [findKey(action.payload)]: {
+            defense: {
+              $set: state.characterCollection[findKey(action.payload)].defense - 1,
+            },
+          },
+        },
+      })
 
     case CHARACTER_HEALTH_SET:
       return {

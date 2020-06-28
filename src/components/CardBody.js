@@ -13,7 +13,6 @@ import {
   _characterDefenseAdd,
   _characterDefenseSub,
 } from '../actions'
-import { gridFromArray } from '../utils'
 import { Button } from './subComponents'
 
 class cardBody extends React.Component {
@@ -21,29 +20,18 @@ class cardBody extends React.Component {
     const { characterCollection } = this.props
 
     return (
-      <div className="row" key={`${id}-${statTitle}`}>
+      <div className="row">
         <div className="col-2 center">
-          <p>
+          <p key={`${id}-${statTitle}-${statAmt}`}>
             {statTitle} {statAmt}
           </p>
         </div>
         <div className="col-1 row">
           <div className="col-1">
-            <Button
-              text="-"
-              onClick={() => {
-                funcSub(id), this.forceUpdate()
-              }}
-              subtract
-            />
+            <Button text="-" onClick={() => funcSub(id)} subtract />
           </div>
           <div className="col-1">
-            <Button
-              text="+"
-              onClick={() => {
-                funcAdd(id), this.forceUpdate()
-              }}
-            />
+            <Button text="+" onClick={() => funcAdd(id)} />
           </div>
         </div>
       </div>
@@ -62,10 +50,8 @@ class cardBody extends React.Component {
       characterCollection,
     } = this.props
 
-    const findCharacter = characterCollection.filter(v => v.id === val.id)
-
     return (
-      <div className="card-container" key={JSON.stringify(findCharacter)}>
+      <div className="card-container" key={val.id}>
         <div className="col-1">
           <div className="card-character-image">
             <img src={`../images/${val.category}.jpg`} alt={`${val.category}`} />
@@ -107,12 +93,6 @@ class cardBody extends React.Component {
     const { characterCollection } = this.props
 
     const mapCharacters = () => characterCollection.map(val => this.renderCard(val))
-    const mapGrid = () =>
-      gridFromArray(characterCollection, 3).map((val, i) => (
-        <div key={i} className="row card-grid-row">
-          {val.map(v => this.renderCard(v))}
-        </div>
-      ))
 
     return <div className="grid-container grid-3 gap">{mapCharacters()}</div>
   }

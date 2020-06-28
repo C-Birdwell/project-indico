@@ -1,9 +1,15 @@
-export const updateArrayObject = (id, array, keyVal, amount) => {
+import update from 'immutability-helper'
+
+export const updateArrayObject = (state, id, array, keyVal, amount) => {
   const key = array.findIndex(val => val.id === id)
-  let newArray = array
-  const keyValue = newArray[key][`${keyVal}`]
 
-  newArray.splice(key, 1, { ...newArray[key], [`${keyVal}`]: keyValue + amount })
+  console.log(array[key][keyVal])
 
-  return newArray
+  return update(state, {
+    [`${array}`]: {
+      [key]: {
+        keyVal: { $set: 0 + amount },
+      },
+    },
+  })
 }
