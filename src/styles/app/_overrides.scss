@@ -29,6 +29,12 @@
     }
   }
 
+  .hide-pad {
+    @media screen and (max-width: $break-pad) {
+      display: none;
+    }
+  }
+
   .hide-mobile {
     @media screen and (max-width: $break-mobile) {
       display: none;

@@ -4,6 +4,10 @@
   flex-direction: row;
 }
 
+.push-down {
+  margin-bottom: 20px;
+}
+
 @for $i from 1 through 100 {
   .col-#{$i} {
     flex: $i;

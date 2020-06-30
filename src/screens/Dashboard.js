@@ -15,24 +15,21 @@ class dashboard extends React.Component {
   }
 
   render() {
-    const { characterCollection } = this.props
+    const { characters } = this.props
     return (
       <div className="content">
         {this.renderHead()}
-        <CardBody array={characterCollection} />
+        <CardBody array={characters} />
       </div>
     )
   }
 }
 
 const mapStateToProps = state => ({
-  characterCollection: state.character.characterCollection,
+  characters: state.character.characters,
 })
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({}, dispatch)
 }
-export const Dashboard = connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(dashboard)
+export const Dashboard = connect(mapStateToProps, mapDispatchToProps)(dashboard)

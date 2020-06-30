@@ -29,6 +29,8 @@ const characterContent = () => ({
   category: randomizeArray(dataCharacterCategory),
 })
 
+const createID = () => uuidv4()
+
 export const character = (state = INITIAL_STATE, action) => {
   // TODO: refactor function for reusability
   // const updateCharacterStats = (stat, amt) =>
@@ -46,15 +48,19 @@ export const character = (state = INITIAL_STATE, action) => {
   //   })
   // }
 
-  // TODO: decouple function for reusability
+  // TODO: decouple functions for reusability
   const findKey = id => state.characterCollection.findIndex(val => val.id == id)
+  const foundKey = findKey(action.payload)
 
   switch (action.type) {
     case CHARACTER_COLLECTION:
       return { ...state, characterCollection: action.payload }
 
     case CHARACTER_CREATE:
-      return { ...state, characterCollection: state.characterCollection.concat(characterContent()) }
+      return {
+        ...state,
+        characterCollection: state.characterCollection.concat(characterContent()),
+      }
 
     case CHARACTER_DELETE:
       return {
@@ -71,9 +77,9 @@ export const character = (state = INITIAL_STATE, action) => {
     case CHARACTER_HEALTH_ADD:
       return update(state, {
         characterCollection: {
-          [findKey(action.payload)]: {
+          [foundKey]: {
             health: {
-              $set: state.characterCollection[findKey(action.payload)].health + 1,
+              $set: state.characterCollection[foundKey].health + 1,
             },
           },
         },
@@ -85,9 +91,9 @@ export const character = (state = INITIAL_STATE, action) => {
     case CHARACTER_HEALTH_SUB:
       return update(state, {
         characterCollection: {
-          [findKey(action.payload)]: {
+          [foundKey]: {
             health: {
-              $set: state.characterCollection[findKey(action.payload)].health - 1,
+              $set: state.characterCollection[foundKey].health - 1,
             },
           },
         },
@@ -99,9 +105,9 @@ export const character = (state = INITIAL_STATE, action) => {
     case CHARACTER_ATTACK_ADD:
       return update(state, {
         characterCollection: {
-          [findKey(action.payload)]: {
+          [foundKey]: {
             attack: {
-              $set: state.characterCollection[findKey(action.payload)].attack + 1,
+              $set: state.characterCollection[foundKey].attack + 1,
             },
           },
         },
@@ -113,9 +119,9 @@ export const character = (state = INITIAL_STATE, action) => {
     case CHARACTER_ATTACK_SUB:
       return update(state, {
         characterCollection: {
-          [findKey(action.payload)]: {
+          [foundKey]: {
             attack: {
-              $set: state.characterCollection[findKey(action.payload)].attack - 1,
+              $set: state.characterCollection[foundKey].attack - 1,
             },
           },
         },
@@ -127,9 +133,9 @@ export const character = (state = INITIAL_STATE, action) => {
     case CHARACTER_DEFENSE_ADD:
       return update(state, {
         characterCollection: {
-          [findKey(action.payload)]: {
+          [foundKey]: {
             defense: {
-              $set: state.characterCollection[findKey(action.payload)].defense + 1,
+              $set: state.characterCollection[foundKey].defense + 1,
             },
           },
         },
@@ -141,9 +147,9 @@ export const character = (state = INITIAL_STATE, action) => {
     case CHARACTER_DEFENSE_SUB:
       return update(state, {
         characterCollection: {
-          [findKey(action.payload)]: {
+          [foundKey]: {
             defense: {
-              $set: state.characterCollection[findKey(action.payload)].defense - 1,
+              $set: state.characterCollection[foundKey].defense - 1,
             },
           },
         },
